@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Gantry Machine Builder</title>
+
+<style>
+
+body{
+    margin:0;
+    overflow:hidden;
+    background:#111;
+    font-family:Arial,sans-serif;
+}
+
+#panel{
+    position:absolute;
+    top:10px;
+    left:10px;
+    z-index:100;
+    background:rgba(0,0,0,.8);
+    padding:10px;
+    border-radius:4px;
+}
+
+button{
+    display:block;
+    width:140px;
+    margin:4px 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="panel">
+
+<button onclick="toggleCover('front')">
+Front Hex
+</button>
+
+<button onclick="toggleCover('rear')">
+Rear Hex
+</button>
+
+<button onclick="toggleCover('leftUpper')">
+Left Upper
+</button>
+
+<button onclick="toggleCover('leftLower')">
+Left Lower
+</button>
+
+<button onclick="toggleCover('rightUpper')">
+Right Upper
+</button>
+
+<button onclick="toggleCover('rightLower')">
+Right Lower
+</button>
+
+<button onclick="toggleCover('top')">
+Top
+</button>
+
+<button onclick="toggleCover('bottom')">
+Bottom
+</button>
+
+<button onclick="showAllCovers()">
+Show All
+</button>
+
+<button onclick="hideAllCovers()">
+Hide All
+</button>
+
+</div>
+
+<script type="module"
+        src="./cube.js"></script>
+
+</body>
+</html>
