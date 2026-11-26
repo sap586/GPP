@@ -2,7 +2,7 @@ import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 
 // covers.js
 
-export function createMachine(scene)
+export function createMachine(scene, rotationDeg = 0)
 {
 	//
 	// Machine
@@ -10,6 +10,8 @@ export function createMachine(scene)
 
 	const machine = new THREE.Group();
 	scene.add(machine);
+
+	machine.rotation.y = THREE.MathUtils.degToRad(rotationDeg);
 
 	//
 	// Materials

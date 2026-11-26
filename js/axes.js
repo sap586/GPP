@@ -9,11 +9,7 @@ export function createGridAxes(scene)
 	//
 
 	const axisLength = 60;
-
-	//
-	// X
-	//
-
+	
 	const xArrow =
 		new THREE.ArrowHelper(
 			new THREE.Vector3(
@@ -37,7 +33,7 @@ export function createGridAxes(scene)
 	const yArrow =
 		new THREE.ArrowHelper(
 			new THREE.Vector3(
-				0,0,1
+				0,0,-1
 			),
 			new THREE.Vector3(
 				0,0,0
@@ -151,7 +147,7 @@ export function createGridAxes(scene)
 	yLabel.position.set(
 		 0,
 		 0,
-		72
+		-72
 	);
 
 	scene.add(yLabel);
@@ -234,7 +230,7 @@ export function createGridAxes(scene)
 
 		sprite.position.set(
 			x,
-			-23.5,
+			0,
 			z
 		);
 
@@ -250,7 +246,7 @@ export function createGridAxes(scene)
 		createGridLabel(
 			x.toString(),
 			x,
-			-58
+			58
 		);
 	}
 
@@ -263,7 +259,7 @@ export function createGridAxes(scene)
 		createGridLabel(
 			y.toString(),
 			-58,
-			y
+			-y
 		);
 	}
 
@@ -302,23 +298,23 @@ export function createGridAxes(scene)
 	createGridLabel(
 		"X MIN",
 		-70,
-		-58
+		58
 	);
 
 	createGridLabel(
 		"X MAX",
 		 70,
-		-58
+		58
 	);
 
 	createGridLabel(
-		"Y MIN",
+		"Y MAX",
 		-58,
 		-70
 	);
 
 	createGridLabel(
-		"Y MAX",
+		"Y MIN",
 		-58,
 		 70
 	);
