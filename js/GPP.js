@@ -272,12 +272,12 @@ let movingPart = createPart();
 
 const placements = [
     [-10,-3],
-    [-8,4],
-    [-3,-2],
-    [0,2],
-    [3,-4],
-    [8,3],
-    [11,-1]
+    [-8,-3],
+    [-3,-3],
+    [0,0],
+    [3,0],
+    [8,0],
+    [10,0]
 ];
 
 let placementIndex = 0;
@@ -316,6 +316,16 @@ const productionAngleStep = Math.PI / 4;
 ////////////////////////////////////////////////////////
 // UI FUNCTIONS
 ////////////////////////////////////////////////////////
+
+window.boardIn = () =>
+{
+    
+};
+
+window.boardOut = () =>
+{
+    
+};
 
 window.startMachine = () =>
 {
@@ -358,14 +368,15 @@ window.setProductionView = () =>
 
 function machineCycle()
 {
+    // stop if all placements are done
+    if (placementIndex >= placements.length) {
+        machineRunning = false;
+        return;
+    }
     const pickX = 0;
     const pickZ = -20;
 
-    const target =
-        placements[
-            placementIndex %
-            placements.length
-        ];
+    const target = placements[placementIndex];
 
     const placeX = target[0];
     const placeZ = target[1];
@@ -478,6 +489,11 @@ function machineCycle()
             placementIndex++;
 
             state = "moveToPick";
+
+            // stop if all placements are done
+            if (placementIndex >= placements.length) {
+                machineRunning = false;
+            }
         }
     }
 
