@@ -192,6 +192,12 @@ const beam = new THREE.Mesh(
     })
 );
 
+beam.rotation.set(
+    THREE.MathUtils.degToRad(0), // X
+    THREE.MathUtils.degToRad(90), // Y
+    THREE.MathUtils.degToRad(0)  // Z
+);
+
 gantry.add(beam);
 
 ////////////////////////////////////////////////////////
@@ -283,7 +289,7 @@ const placedParts = [];
 // MACHINE STATE
 ////////////////////////////////////////////////////////
 
-let machineRunning = true;
+let machineRunning = false;
 let state = "moveToPick";
 
 ////////////////////////////////////////////////////////
@@ -522,7 +528,7 @@ function animate()
     }
     else
     {
-		/*
+		
 		const angle =
 			productionViewIndex *
 			productionAngleStep;
@@ -543,8 +549,8 @@ function animate()
 
 		camera.position.z +=
 			(targetZ - camera.position.z) * 0.05;
-		*/
-			
+		
+		/*	
 		const targetX =
 			Math.cos(productionPitch) *
 			Math.sin(productionYaw) *
@@ -567,7 +573,9 @@ function animate()
 
 		camera.position.z +=
 			(targetZ - camera.position.z) * 0.1;
+        */
 
+		camera.up.set(0, 1, 0);
 		camera.lookAt(
 			0,
 			5,
@@ -575,6 +583,18 @@ function animate()
 		);
 
     }
+
+    const cameraInfo = document.getElementById("cameraInfo");
+    const rotation = camera.rotation;
+    cameraInfo.innerHTML =
+        "pos : (" +
+        camera.position.x.toFixed(2) + ", " +
+        camera.position.y.toFixed(2) + ", " +
+        camera.position.z.toFixed(2) + ")<br>" +
+        "rot : (" +
+        THREE.MathUtils.radToDeg(rotation.x).toFixed(2) + ", " +
+        THREE.MathUtils.radToDeg(rotation.y).toFixed(2) + ", " +
+        THREE.MathUtils.radToDeg(rotation.z).toFixed(2) + ")";
 
     renderer.render(
         scene,
